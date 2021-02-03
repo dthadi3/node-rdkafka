@@ -1,8 +1,13 @@
+arch:
+  - amd64
+  - ppc64le
+  
 language: node_js
 
 cache:
   directories:
   - node_modules
+#Added node and lts/* versions
 node_js:
   - "4"
   - "6"
@@ -10,6 +15,9 @@ node_js:
   - "10"
   - "12"
   - "13"
+  - "node"
+  - "lts/*"
+  
 sudo: required
 services: docker
 before_install:
