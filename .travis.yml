@@ -21,7 +21,7 @@ node_js:
 sudo: required
 services: docker
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" && "$TRAVIS_BUILD_STAGE_NAME" =~ Test.* ]]; then ./run_docker.sh; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./run_docker.sh; fi
   # - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install openssl; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then ./win_install.bat; fi
 install:
