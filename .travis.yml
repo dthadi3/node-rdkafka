@@ -9,12 +9,12 @@ cache:
   - node_modules
 #Added node and lts/* versions
 node_js:
-  - "4"
-  - "6"
-  - "8"
-  - "10"
+#  - "4"
+#  - "6"
+#  - "8"
+#  - "10"
   - "12"
-  - "13"
+#  - "13"
   - "node"
   - "lts/*"
   
@@ -30,18 +30,18 @@ install:
 script:
   - if [[ "$TRAVIS_BUILD_STAGE_NAME" =~ Test.* ]]; then make lint && make test && make check; else echo $TRAVIS_BUILD_STAGE_NAME; fi
 
-jobs:
-  include:
-    - stage: test_on_mac
-      os: osx
-      osx_image: xcode10
-      env: CPPFLAGS=-I/usr/local/opt/openssl/include LDFLAGS=-L/usr/local/opt/openssl/lib
-      node_js:
-        - "10"
-    - stage: test_on_win
-      os: windows
-      node_js:
-        - "10"
+#jobs:
+#  include:
+#    - stage: test_on_mac
+#      os: osx
+#      osx_image: xcode10
+#      env: CPPFLAGS=-I/usr/local/opt/openssl/include LDFLAGS=-L/usr/local/opt/openssl/lib
+#      node_js:
+#        - "10"
+#    - stage: test_on_win
+#      os: windows
+#      node_js:
+#        - "10"
     # - stage: create_doc
     #   provider: script
     #   before_deploy:
@@ -52,21 +52,21 @@ jobs:
     #   script:
     #     - "./make_docs.sh"
     #   if: (tag =~ ^v)
-    - stage: deploy
-      os: linux
-      node_js:
-        - "10"
-      script: skip
-      if: (tag =~ ^v)
-      before_deploy:
-      - npm install --no-save semver
-      deploy:
-        provider: npm
-        skip_cleanup: true
-        email: webmakersteve@gmail.com
-        api_key:
-          secure: "GUI9X1TnemXIMj5nZDqjrB3zBdMVxhAVKz18BN8TzsQBBne7BOrZ7L9yM3nOwxydm53NAPHFnEjYhYhvM+qhzLnik+XFQ7O3i9rS0hAvzQOBXfup5daib5A8VPMEdTRCXPS3hZ+p5n3ZBruSCQnyTu+HL1SGH//L+j52T5hiOZ3HauhCx9Q0myTBhB6CU5L8yscUUMg12qL7Uw4jsJLfgBRq6hAxphKXfvKt+NJMOWMSmQMbC1FxgfEgIkjFUtasWcUqCmfqx+983XdhhGhC64CYkusSZynNxnsTAosZGJiIZTPYXXL+imBgsEpsMCnW/id/qwaDzRueh2vWlBq2Lk9XSU3VOlKf8nMCJafc3CVjdOZvekyk+WU23gFd4Tpmwk0OtOOM2CKMoNxeMfNvA7ovQ96PP+LDdnRvdoFZV/oX3v3jaXR6DXFd8jnqRTpK4qj7qFO9eWgy1vXdfpwwS2gGVkFvSlWa3niBWzfLSL49Lm7UBwPKJYq0V5taO2dXz8nniTBAQJDcIEKaJkG6IYw5qnLpDLHB3jIw4NwYWw6f/cB5KZXCSeoGBOb9/61XD6Uq0QoQLIhj/vTKmOjNtZHlBzHUoKGYrP+SQRk9BgYh/Cr0azVhSpm2Zjz1fTJ1kYWKzHU8JPyWf6/isKQM4FLhFvWihy/kxkVTkZGR0b4="
-        on:
-          tags: true
-      after_deploy:
-        - cat package.json
+#    - stage: deploy
+#      os: linux
+#      node_js:
+#        - "10"
+#      script: skip
+#      if: (tag =~ ^v)
+#      before_deploy:
+#      - npm install --no-save semver
+#      deploy:
+#        provider: npm
+#        skip_cleanup: true
+#        email: webmakersteve@gmail.com
+#        api_key:
+#          secure: "GUI9X1TnemXIMj5nZDqjrB3zBdMVxhAVKz18BN8TzsQBBne7BOrZ7L9yM3nOwxydm53NAPHFnEjYhYhvM+qhzLnik+XFQ7O3i9rS0hAvzQOBXfup5daib5A8VPMEdTRCXPS3hZ+p5n3ZBruSCQnyTu+HL1SGH//L+j52T5hiOZ3HauhCx9Q0myTBhB6CU5L8yscUUMg12qL7Uw4jsJLfgBRq6hAxphKXfvKt+NJMOWMSmQMbC1FxgfEgIkjFUtasWcUqCmfqx+983XdhhGhC64CYkusSZynNxnsTAosZGJiIZTPYXXL+imBgsEpsMCnW/id/qwaDzRueh2vWlBq2Lk9XSU3VOlKf8nMCJafc3CVjdOZvekyk+WU23gFd4Tpmwk0OtOOM2CKMoNxeMfNvA7ovQ96PP+LDdnRvdoFZV/oX3v3jaXR6DXFd8jnqRTpK4qj7qFO9eWgy1vXdfpwwS2gGVkFvSlWa3niBWzfLSL49Lm7UBwPKJYq0V5taO2dXz8nniTBAQJDcIEKaJkG6IYw5qnLpDLHB3jIw4NwYWw6f/cB5KZXCSeoGBOb9/61XD6Uq0QoQLIhj/vTKmOjNtZHlBzHUoKGYrP+SQRk9BgYh/Cr0azVhSpm2Zjz1fTJ1kYWKzHU8JPyWf6/isKQM4FLhFvWihy/kxkVTkZGR0b4="
+#        on:
+#          tags: true
+#      after_deploy:
+#        - cat package.json
