@@ -25,10 +25,12 @@ before_install:
   # - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install openssl; fi
 #  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then ./win_install.bat; fi
 install:
-  - if [[ "$TRAVIS_BUILD_STAGE_NAME" =~ Test.* ]]; then npm install; fi
+#  - if [[ "$TRAVIS_BUILD_STAGE_NAME" =~ Test.* ]]; then npm install; fi
+  - npm install
 
 script:
-  - if [[ "$TRAVIS_BUILD_STAGE_NAME" =~ Test.* ]]; then make lint && make test && make check; else echo $TRAVIS_BUILD_STAGE_NAME; fi
+#  - if [[ "$TRAVIS_BUILD_STAGE_NAME" =~ Test.* ]]; then make lint && make test && make check; else echo $TRAVIS_BUILD_STAGE_NAME; fi
+  - make lint && make test && make check
 
 #jobs:
 #  include:
