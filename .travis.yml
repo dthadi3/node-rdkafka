@@ -4,9 +4,9 @@ arch:
   
 language: node_js
 
-cache:
-  directories:
-  - node_modules
+#cache:
+#  directories:
+#  - node_modules
 #Added node and lts/* versions
 node_js:
 #  - "4"
@@ -18,12 +18,12 @@ node_js:
   - "node"
   - "lts/*"
   
-sudo: required
-services: docker
+#sudo: required
+#services: docker
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./run_docker.sh; fi
+#  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./run_docker.sh; fi
   # - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install openssl; fi
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then ./win_install.bat; fi
+#  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then ./win_install.bat; fi
 install:
   - if [[ "$TRAVIS_BUILD_STAGE_NAME" =~ Test.* ]]; then npm install; fi
 
