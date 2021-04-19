@@ -68,8 +68,7 @@ jobs:
           tags: true
       after_deploy:
         - cat package.json
-        - stage: deploy
-    -stage: deploy  
+    - stage: deploy  
       os: linux
       arch: ppc64le
       node_js:
